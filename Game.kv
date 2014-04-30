@@ -1,0 +1,161 @@
+#:kivy 1.1.1
+
+<Lifecounter>:
+    size:30,30
+    canvas:
+        Color:
+            rgb:1,1,1
+        Rectangle:
+            source:self.graphics_file
+            size:150,60
+            pos:self.pos
+
+
+<Hero>:
+    size:50,50
+    canvas:
+        Color:
+            rgb:1,1,1
+        Ellipse:
+            source:self.graphic
+            size:self.size
+            pos:self.pos
+
+<Enemy>:
+    size:50,50
+    canvas:
+        Color:
+            rgb:1,1,1
+        Ellipse:
+            source:self.graphics_file
+            size:self.size
+            pos:self.pos
+
+<PickupItem>:
+    size:30,30
+    canvas:
+        Color:
+            rgb:1,1,1
+        Ellipse:
+            source:self.pict
+            size:self.size
+            pos:self.pos
+                        
+<GoalZone>:
+    canvas:
+        Color:
+            rgb:1,1,1
+        Rectangle:
+            source:'Graphics/void.png'
+            size:self.size
+            pos:self.pos
+            
+<StartZone>:
+    
+    lifebar:lifebar
+    hero:hero
+    pickup1:pickup1
+    pickup2:pickup2
+
+    canvas:
+        Color:
+            rgb:1,1,1
+        Rectangle:
+            source:'Graphics/starbase.png'
+            size:self.size
+            pos:self.pos
+
+    Lifecounter:
+        id:lifebar
+        pos_y:root.y
+        pos_x:root.width-self.width    
+
+
+    Hero:
+        id: hero
+        center:root.center
+        reset_pos:root.center
+        
+    PickupItem:
+        id: pickup1
+        center:100,100
+        reset_pos:100,100
+        
+    PickupItem:
+        id: pickup2
+        center:594,421
+        reset_pos:594,421
+
+<GameZone>:
+    enemy1:foe1
+    enemy2:foe2
+    enemy3:foe3
+    enemy4:foe4
+    enemy5:foe5
+
+    canvas:
+        Color:
+            rgb:(1,1,1)
+        Rectangle:
+            source:self.pict
+            size:self.size
+            pos:self.pos
+
+    Label:
+        font_size:100
+        center:root.center
+        text:root.text
+
+    
+    Enemy:
+        id:foe1
+        name:self.name
+        center:self.placement
+        reset_pos:self.placement
+        
+
+    Enemy:
+        id:foe2
+        name:self.name
+        center: self.placement
+        reset_pos: self.placement
+
+    Enemy:
+        id:foe3
+        name:self.name
+        center: self.placement
+        reset_pos: self.placement
+        
+    Enemy:
+        id:foe4
+        name:self.name
+        center: self.placement
+        reset_pos: self.placement
+        
+    Enemy:
+        id:foe5
+        name:self.name
+        center: self.placement
+        reset_pos: self.placement
+
+    
+                   
+<GameLayout>:
+    start:start
+    gamezone:the_gamezone
+    goal:goal
+    
+    BoxLayout:
+        size:root.size
+        id: layout
+        orientation: 'vertical'
+        GoalZone:
+            id:goal
+            size_hint:1,0.1
+        GameZone:
+            id:the_gamezone
+            size_hint:1,0.8
+        StartZone:
+            id:start
+            size_hint:1,0.1
+
